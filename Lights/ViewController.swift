@@ -48,6 +48,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+        cell.textLabel?.font = UIFont(name:"Avenir", size:22)
         let lightData = lightDataArray[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = lightData.name
         if (lightData.reachable!) {
