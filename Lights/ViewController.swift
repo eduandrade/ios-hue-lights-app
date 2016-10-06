@@ -19,7 +19,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lightDataArray = [LightData]()
-        self.lightAPi.loadLights(didLoadLightData)
+        
+        let utils = Utils()
+        if (utils.isConnectedToNetwork()) {
+            self.lightAPi.loadLights(didLoadLightData)
+        } else {
+            let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
     }
     
     @IBAction func reloadLightsAction(_ sender: UIBarButtonItem) {

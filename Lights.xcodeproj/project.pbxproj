@@ -14,6 +14,7 @@
 		CCD31CD01D8A22AE00E66926 /* Lights.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCD31CCE1D8A22AE00E66926 /* Lights.xcdatamodeld */; };
 		CCD31CD21D8A22AE00E66926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCD31CD11D8A22AE00E66926 /* Assets.xcassets */; };
 		CCD31CD51D8A22AE00E66926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCD31CD31D8A22AE00E66926 /* LaunchScreen.storyboard */; };
+		CCDCEB751DA5C6510000324D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDCEB741DA5C6510000324D /* Utils.swift */; };
 		CCE0354B1D9DE6700090312B /* LightApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0354A1D9DE6700090312B /* LightApi.swift */; };
 		CCE0354D1D9DEC4C0090312B /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0354C1D9DEC4C0090312B /* RestClient.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		CCD31CD11D8A22AE00E66926 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCD31CD41D8A22AE00E66926 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCD31CD61D8A22AE00E66926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCDCEB741DA5C6510000324D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		CCE0354A1D9DE6700090312B /* LightApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightApi.swift; sourceTree = "<group>"; };
 		CCE0354C1D9DEC4C0090312B /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 				CC92F9591D9B560800B8E39F /* LightData.swift */,
 				CCE0354A1D9DE6700090312B /* LightApi.swift */,
 				CCE0354C1D9DEC4C0090312B /* RestClient.swift */,
+				CCDCEB741DA5C6510000324D /* Utils.swift */,
 				CCD31CCB1D8A22AE00E66926 /* Main.storyboard */,
 				CCD31CD11D8A22AE00E66926 /* Assets.xcassets */,
 				CCD31CD31D8A22AE00E66926 /* LaunchScreen.storyboard */,
@@ -152,6 +155,7 @@
 				CC92F95A1D9B560800B8E39F /* LightData.swift in Sources */,
 				CCE0354B1D9DE6700090312B /* LightApi.swift in Sources */,
 				CCD31CCA1D8A22AE00E66926 /* ViewController.swift in Sources */,
+				CCDCEB751DA5C6510000324D /* Utils.swift in Sources */,
 				CCD31CD01D8A22AE00E66926 /* Lights.xcdatamodeld in Sources */,
 				CCE0354D1D9DEC4C0090312B /* RestClient.swift in Sources */,
 				CCD31CC81D8A22AE00E66926 /* AppDelegate.swift in Sources */,
