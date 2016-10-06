@@ -24,11 +24,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if (utils.isConnectedToNetwork()) {
             self.lightAPi.loadLights(didLoadLightData)
         } else {
-            let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "No WI-FI", message: "No WI-FI connection!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Got It!", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        
         
     }
     
