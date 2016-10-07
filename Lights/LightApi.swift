@@ -16,14 +16,14 @@ class LightApi {
     
     func getApiUrl() -> String {
         //192.168.0.15
-        return "http://" + getApiIp() + "/api/" + getApiUser()
+        return "http://" + getBridgeIp() + "/api/" + getApiUser()
     }
     
     func getApiUser() -> String {
         return "k733vjvJqHk1fN0ZN6krLFkvaWtUPCItWCS0oYqD"
     }
     
-    func getApiIp() -> String {
+    func getBridgeIp() -> String {
         if (self.apiIp.isEmpty) {
 
             let semaphore = DispatchSemaphore(value: 0)
@@ -38,9 +38,10 @@ class LightApi {
                 } else {
                     do {
                         let jsonArr = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
-                        if let json = jsonArr[0] as? NSDictionary {
-                            let ipAddress = json["internalipaddress"] as! String
-                            self.apiIp = ipAddress
+                        if (jsonArr.count > 0) {
+                            if let json = jsonArr[0] as? NSDictionary {
+                                self.apiIp = json["internalipaddress"] as! String
+                            }
                         }
                     } catch {
                         print("Fetch failed: \((error as NSError).localizedDescription)")

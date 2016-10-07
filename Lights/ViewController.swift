@@ -16,23 +16,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     let lightAPi = LightApi()
     
+    let utils = Utils()
+    
+    //var indicator = UIActivityIndicatorView()
+    
+    let indicator:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lightDataArray = [LightData]()
-        
-        let utils = Utils()
-        if (utils.isConnectedToNetwork()) {
-            self.lightAPi.loadLights(didLoadLightData)
-        } else {
-            let alert = UIAlertController(title: "No WI-FI", message: "No WI-FI connection!", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Got It!", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
+        loadLights()
     }
     
     @IBAction func reloadLightsAction(_ sender: UIBarButtonItem) {
-        self.lightAPi.loadLights(didLoadLightData)
+        loadLights()
     }
     
     @IBAction func onOffAction(_ sender: UIBarButtonItem) {
@@ -41,7 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.lightAPi.turnLightOnOff(lightData: lightData)
             }
         }
-        self.lightAPi.loadLights(didLoadLightData)
+        loadLights()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,7 +74,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.deselectRow(at: indexPath, animated: true)
         let lightData = lightDataArray[(indexPath as NSIndexPath).row]
         self.lightAPi.changeLightColor(lightData: lightData)
-        self.lightAPi.loadLights(didLoadLightData)
+        loadLights()
+    }
+    
+    func startIndicator() {
+        indicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
+        indicator.bringSubview(toFront: self.view)
+        indicator.startAnimating()
+    }
+    
+    func stopIndicator() {
+        indicator.stopAnimating()
+        indicator.hidesWhenStopped = true
+    }
+    
+    func loadLights() {
+        if (utils.isConnectedToNetwork()) {
+            startIndicator()
+            self.lightAPi.loadLights(didLoadLightData)
+        } else {
+            let alert = UIAlertController(title: "No WI-FI", message: "No WI-FI connection!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Got It!", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func didLoadLightData(_ loadedLightData: [LightData]) {
@@ -86,6 +108,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.lightDataArray.append(light)
         }
         tableView.reloadData()
+        stopIndicator()
     }
     
 }
